@@ -25,11 +25,11 @@ def get_total_cost(data: list[tuple]) -> float:
 
 #returns a string with the cost report
 def get_report(data: list[tuple]) -> str:
-    total_cost = get_total_cost(data)
-    ret = 'Total cost of all items: ' + str(total_cost) + '\n'
+    total_cost = round(get_total_cost(data), 2)
+    ret = 'Total cost of all items: $' + str(total_cost) + '\n'
     for item in data:
-        percent_cost = round((item[0] / total_cost), 2)
-        ret += 'Expense: ' + item[1] + ' Price: ' + str(item[0]) + ' Percent of total cost: ' + str(percent_cost) + '\n'
+        percent_cost = round((item[0] / total_cost) * 100, 2)
+        ret += 'Expense: ' + item[1] + ' Price: $' + str(item[0]) + ' Percent of total cost: ' + str(percent_cost) + '%\n'
     return ret
 
 if __name__ == '__main__':
