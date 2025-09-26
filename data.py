@@ -1,21 +1,28 @@
 #runs the program
 def main() -> None:
     data = get_input()
-    process_input(data)
+    print(get_report(data))
 
-#asks the user for input and formats it as a list
-def get_input() -> list[tuple(str, float)]:
+#asks the user for input and formats it as a list sorted by cost
+def get_input() -> list[tuple(float, str)]:
     expenses = []
     name = input('Enter the name of the expense (or x to quit): ')
     cost = input('Enter the cost of the expense: ')
     while(name != 'x'):
-        expenses.append(tuple(name, cost))
+        expenses.append(tuple(cost, name))
         name = input('Enter the name of the expense (or x to quit): ')
         cost = input('Enter the cost of the expense: ')
-    return expenses
+    return sorted(expenses)
 
-#performs calculations with the obtained data
-def process_input(data: list[tuple(str, float)]) -> None:
+#obtains the total cost of all items
+def get_total_cost(data: list[tuple(float, str)]) -> float:
+    total_cost = 0
+    for item in data:
+        total_cost += item[1]
+    return total_cost
+
+#returns a string with the data report
+def get_report(data: list[tuple(float, str)], total_cost: float) -> str:
     pass
 
 if __name__ == '__main__':
