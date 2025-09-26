@@ -14,7 +14,8 @@ def get_input() -> list[tuple]:
             name = input('Enter the name of the expense (or x to quit): ')
         except:
             print('Error: cost must be a valid number')
-    return sorted(expenses)
+    expenses.sort(reverse = True)
+    return expenses
 
 #obtains the total cost of all items
 def get_total_cost(data: list[tuple]) -> float:
