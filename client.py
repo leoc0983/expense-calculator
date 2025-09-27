@@ -12,14 +12,15 @@ def start_client():
         output_stream.write(get_input())
         output_stream.flush()
 
-        print(input_stream.readline())
+        for line in input_stream.readlines():
+            print(line.strip())
 
 def get_input() -> str:
     expenses = ''
     name = input('Enter the name of the expense (or q to quit): ')
     while name != 'q':
         cost = input('Enter the cost of ' + name + ': ')
-        expenses += ' ' + cost + '\n'
+        expenses += name + ': $' + cost + '\n'
         name = input('Enter the name of the expense (or q to quit): ')
     return expenses
 

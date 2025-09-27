@@ -13,13 +13,11 @@ def start_server(host_address, host_port):
         with connection:
             print('Client connected')
 
-            while True:
-                rec_msg = connection.recv(4096)
-                print('echo', rec_msg)
+            rec_msg = connection.recv(4096)
 
-                if not rec_msg:
-                    break
-                connection.sendall(rec_msg)
+            print(rec_msg.decode())
+
+            connection.sendall(rec_msg)
 
             print('Client disconnected')
 
