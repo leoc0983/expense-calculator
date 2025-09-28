@@ -1,15 +1,15 @@
-#expense-calculator
+# expense-calculator
 
-#Purpose:
+## Purpose:
 To allow users to budget and track daily expenses
 
-#Features:
-Asks the user to input expense data step by step
-Creates an organized list of expenses and stores it in a SQL database for easy future access
-Formats the list in a clean, readable way
-Sorts the expenses from most expensive to lease expensive
+## Features:
+- Asks the user to input expense data step by step
+- Creates an organized list of expenses and stores it in a SQL database for easy future access
+- Formats the list in a clean, readable way
+- Sorts the expenses from most expensive to least expensive
 
-#How to run:
+## How to run:
 1. Clone the repository with
 https://github.com/leoc0983/expense-calculator.git
 2. Open two terminals for server.py and client.py
