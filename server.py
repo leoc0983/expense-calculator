@@ -16,9 +16,23 @@ def start_server(host_address, host_port):
 
             rec_msg = connection.recv(4096)
 
-            print(rec_msg.decode())
+            data = rec_msg.decode().strip()
 
-            connection.sendall(rec_msg)
+            create_db()
+
+            for line in data.splitlines():
+                if ':' in line:
+                    name, cost = line.split(':', 1)
+                    real_cost = round(float(cost.strip()), 2)
+                    store_expense(name.strip(), real_cost)
+                    print(f'{name}: ${real_cost}')
+
+            expenses = get_expenses()
+            response = []
+            for name, cost in expenses:
+                response.append(f'{name}: ${cost}')
+            response_text = '\n'.join(response) + '\n'
+            connection.sendall(response_text.encode())
 
             print('Client disconnected')
 

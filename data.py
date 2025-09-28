@@ -6,12 +6,12 @@ def main() -> None:
 #asks the user for input and formats it as a list sorted by cost
 def get_input() -> list[tuple]:
     expenses = []
-    name = input('Enter the name of the expense (or x to quit): ')
-    while(name != 'x'):
+    name = input('Enter the name of the expense (or q to quit): ')
+    while(name != 'q'):
         try:
             cost = float(input('Enter the cost of ' + str(name) + ': '))
             expenses.append((cost, name))
-            name = input('Enter the name of the expense (or x to quit): ')
+            name = input('Enter the name of the expense (or q to quit): ')
         except:
             print('Error: cost must be a valid number')
     expenses.sort(reverse = True)

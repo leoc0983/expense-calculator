@@ -20,7 +20,7 @@ def get_input() -> str:
     name = input('Enter the name of the expense (or q to quit): ')
     while name != 'q':
         cost = input('Enter the cost of ' + name + ': ')
-        expenses += name + ': $' + cost + '\n'
+        expenses += name + ': ' + cost + '\n'
         name = input('Enter the name of the expense (or q to quit): ')
     return expenses
 
