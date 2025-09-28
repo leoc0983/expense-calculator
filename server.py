@@ -30,9 +30,33 @@ def create_db():
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT NOT NULL,
         cost INTEGER NOT NULL
-    ''')
+        ) STRICT;'''
+    )
     connection.commit()
     connection.close()
+
+def store_expense(name, cost):
+    cost_in_cents = int(round(cost * 100))
+    connection = sqlite3.connect('expenses.db')
+    cursor = connection.cursor()
+    cursor.execute('''
+        INSERT INTO expenses (name, cost)
+        VALUES (?, ?);''', (name, cost_in_cents)
+    )
+    connection.commit()
+    connection.close()
+
+def get_expenses():
+    connection = sqlite3.connect('expenses.db')
+    cursor = connection.cursor()
+    cursor.execute('''
+    SELECT name, cost
+    FROM expenses
+    ORDER BY cost DESC;'''
+    )
+    entries = cursor.fetchall()
+    connection.close()
+    return [(name, cost/100.00) for name, cost in entries]
 
 if __name__ == '__main__':
     start_server('localhost', 8000)
