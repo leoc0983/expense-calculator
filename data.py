@@ -1,4 +1,5 @@
 #runs the program
+#run client and server for networks/sockets and SQLite
 def main() -> None:
     data = get_input()
     print(get_report(data))

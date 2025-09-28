@@ -3,7 +3,7 @@ from data import get_total_cost
 from data import get_report
 
 class TestData(unittest.TestCase):
-    def test_get_total_cost(self):
+    def test_get_total_cost_returns_accurate_cost(self):
         data_set = [(1, 1), (2, 2), (3, 3), (4, 4), (5, 5)]
         total_cost = get_total_cost(data_set)
         self.assertEqual(total_cost, 15)
@@ -12,7 +12,7 @@ class TestData(unittest.TestCase):
         total_cost = get_total_cost(data_set)
         self.assertEqual(total_cost, 0)
 
-    def test_get_report(self):
+    def test_get_report_returns_correct_string(self):
         data_set = [(1.00, 'rent'), (2.01, 'groceries'), (3.02, 'gas')]
         self.assertEqual(get_report(data_set),
         'Total cost of all items: $6.03\n' +
